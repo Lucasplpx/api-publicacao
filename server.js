@@ -1,22 +1,26 @@
-const express = require("express")
-const mongoose = require("mongoose")
-const cors = require("cors")
-const app = express()
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const app = express();
 
-app.use(cors())
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
 //Config MDB
-require("dotenv/config")
-const { DB_USER, DB_PASS } = process.env
-mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASS}@cluster0-wicox.mongodb.net/Publicacao?retryWrites=true&w=majority`, {
-  useNewUrlParser: true
-})
+require("dotenv/config");
+const { DB_USER, DB_PASS } = process.env;
+mongoose.connect(
+  `mongodb+srv://${DB_USER}:${DB_PASS}@cluster0-wicox.mongodb.net/Publicacao?retryWrites=true&w=majority`,
+  {
+    useFindAndModify: false,
+    useNewUrlParser: true
+  }
+);
 //Register model
-require("./src/Models/Publicacao")
+require("./src/Models/Publicacao");
 
 //Routes
-app.use("/", require("./src/routes"))
+app.use("/", require("./src/routes"));
 
 app.listen(3000, () => {
-  console.log('Server is running!')
-})
+  console.log("Server is running!");
+});

@@ -1,40 +1,58 @@
-const { model } = require("mongoose")
-const Publicacao = model("Publicacoe")
+const { model } = require("mongoose");
+const Publicacao = model("Publicacoe");
 
 module.exports = {
-
   async list(req, res) {
-    const data = await Publicacao.find()
-    return res.json(data)
+    try {
+      const data = await Publicacao.find();
+      return res.json(data);
+    } catch (err) {
+      console.log(err);
+      return res.json({ "ERROR IN": "Api List" });
+    }
   },
 
   async listOne(req, res) {
-    const { id } = req.params
-    const data = await Publicacao.findById(id)
-    return res.json(data)
+    const { id } = req.params;
+    try {
+      const data = await Publicacao.findById(id);
+      if (data === null) return res.json({ "ID Not Found": `${id}` });
+      return res.json(data);
+    } catch (err) {
+      console.log(err);
+      return res.json({ "ERROR IN": "Api listOne" });
+    }
   },
 
   async save(req, res) {
-    const data = await Publicacao.create(req.body)
-    return res.json(data)
+    try {
+      const data = await Publicacao.create(req.body);
+      return res.json(data);
+    } catch (err) {
+      console.log(err);
+      return res.json({ "ERROR IN": "Api save" });
+    }
   },
 
   async update(req, res) {
-    const { id } = req.params
-    const data = await Publicacao.findOneAndUpdate(id, req.body, { new: true })
-    return res.json(data)
+    const { id } = req.params;
+    try {
+      const data = await Publicacao.findByIdAndUpdate(id, req.body);
+      return res.json(data);
+    } catch (err) {
+      console.log(err);
+      return res.json({ "ERROR IN": "Api update" });
+    }
   },
 
   async remove(req, res) {
-    const { id } = req.params
+    const { id } = req.params;
     try {
-      const data = await Publicacao.findByIdAndDelete(id)
-      return res.json({ removido: data })
+      const data = await Publicacao.findByIdAndDelete(id);
+      return res.json({ removido: data });
     } catch (err) {
-      return res.json({ removido: false })
+      console.log(err);
+      return res.json({ "ERROR IN ID": `Api remove ${id}` });
     }
-
   }
-
-
-}
+};

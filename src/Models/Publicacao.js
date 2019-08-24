@@ -1,27 +1,27 @@
-const { Schema, model } = require("mongoose")
+const { Schema, model } = require("mongoose");
 
 const PublicacaoSchema = new Schema({
   nome: {
     type: String,
-    required: true,
+    required: true
   },
   descricao: {
-    type: String,
+    type: String
   },
   local: {
     type: String,
-    required: true,
+    required: true
   },
   hashtags: {
-    type: String,
+    type: String
   },
   url_img: {
-    type: String,
+    type: String
   },
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: Date.now
   }
-})
+});
 
-model('Publicacoe', PublicacaoSchema)
+model("Publicacoe", PublicacaoSchema);
