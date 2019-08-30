@@ -21,6 +21,4 @@ require("./src/Models/Publicacao");
 //Routes
 app.use("/", require("./src/routes"));
 
-app.listen(APP_URL, () => {
-  console.log("Server is running!");
-});
+app.listen(process.env.PORT || 3000);
