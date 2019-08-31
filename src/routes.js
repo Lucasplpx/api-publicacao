@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const routes = Router();
 
-const Publicacao = require("./controllers/Publicacao");
+const Publicacao = require("./Controllers/Publicacao");
 
 routes.get("/publicacoes", Publicacao.list);
 routes.get("/publicacoes/:id", Publicacao.listOne);
