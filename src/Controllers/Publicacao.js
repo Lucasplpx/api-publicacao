@@ -31,7 +31,14 @@ module.exports = {
             Delete: "/publicacoes/5d607b1118a8852e4c383d16",
             Method: "delete"
           }
-        ]
+        ],
+        ExampleJsonBody: {
+          "nome": "required",
+          "descricao": "required",
+          "local": "required",
+          "hashtags": "no required",
+          "url_img": "no required",
+        }
       }
     ];
 
