@@ -2,6 +2,41 @@ const { model } = require("mongoose");
 const Publicacao = model("Publicacoe");
 
 module.exports = {
+  main(req, res) {
+    let data = [
+      {
+        title: "Welcome api publicacoes !!!"
+      },
+      {
+        routes: [
+          {
+            ListAll: "/publicacoes",
+            Method: "get"
+          },
+          {
+            ListOne: "/publicacoes/5d5ddab8b0ebeb325058c67b",
+            Method: "get"
+          },
+          {
+            Save: "/publicacoes",
+            Method: "post",
+            info: "Send json body"
+          },
+          {
+            Update: "/publicacoes/5d607d27e3c56120acd749a3",
+            Method: "put",
+            info: "Send json body"
+          },
+          {
+            Delete: "/publicacoes/5d607b1118a8852e4c383d16",
+            Method: "delete"
+          }
+        ]
+      }
+    ];
+
+    return res.json(data)
+  },
   async list(req, res) {
     try {
       const data = await Publicacao.find();

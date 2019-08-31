@@ -3,6 +3,7 @@ const routes = Router();
 
 const Publicacao = require("./Controllers/Publicacao");
 
+routes.get("/", Publicacao.main)
 routes.get("/publicacoes", Publicacao.list);
 routes.get("/publicacoes/:id", Publicacao.listOne);
 routes.post("/publicacoes", Publicacao.save);
