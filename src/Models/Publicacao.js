@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const mongoosePaginate = require("mongoose-paginate");
 
 const PublicacaoSchema = new Schema({
   nome: {
@@ -23,5 +24,7 @@ const PublicacaoSchema = new Schema({
     default: Date.now
   }
 });
+
+PublicacaoSchema.plugin(mongoosePaginate);
 
 model("Publicacoe", PublicacaoSchema);
