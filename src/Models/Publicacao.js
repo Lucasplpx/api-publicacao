@@ -26,6 +26,4 @@ const PublicacaoSchema = new Schema({
 });
 PublicacaoSchema.plugin(mongoosePaginate);
 
-PublicacaoSchema.plugin(mongoosePaginate);
-
 model("Publicacoe", PublicacaoSchema);
