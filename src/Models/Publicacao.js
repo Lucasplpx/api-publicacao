@@ -24,6 +24,7 @@ const PublicacaoSchema = new Schema({
     default: Date.now
   }
 });
+PublicacaoSchema.plugin(mongoosePaginate);
 
 PublicacaoSchema.plugin(mongoosePaginate);
 
