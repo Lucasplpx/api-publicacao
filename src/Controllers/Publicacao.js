@@ -47,7 +47,7 @@ module.exports = {
   async list(req, res) {
     try {
       const { page = 1 } = req.query;
-      const data = await Publicacao.paginate({}, { page , limit: 5 } );
+      const data = await Publicacao.paginate({}, { page , limit: 5 , sort: { _id: -1 } } );
       return res.json(data);
     } catch (err) {
       console.log(err);
